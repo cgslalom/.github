@@ -1,0 +1,7 @@
+{
+    "name": "CGSlalom AWS Terraform Apply Workflow",
+    "description": "A workflow template that allows for 'terraform apply' to be applied to AWS",
+    "categories": [
+        "Terraform"
+    ]
+}
