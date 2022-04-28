@@ -1,10 +1,6 @@
 name: 'AWS-Terraform-NoInfraChangeSteps'
 
 on:
-  push:
-    branches: [ $default-branch ]
-  pull_request: 
-    branches: [ $default-branch ]
   workflow_call:
    
  
@@ -34,6 +30,12 @@ jobs:
       id: init
       run: terraform init 
     
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TF_ACTION_WORKING_DIR: '.'
+      AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    
     # Checks that all Terraform configuration files adhere to a canonical format and style
     - name: Terraform Format
       id: fmt
@@ -44,6 +46,7 @@ jobs:
       id: validate
       run: terraform validate -no-color
   
+
     # Evaluates and generates an execution plan for Terraform
     - name: Terraform Plan
       id: plan
