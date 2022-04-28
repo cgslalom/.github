@@ -11,7 +11,8 @@ on:
 jobs:
   aws-terraform-noinfrachange-reusable:
     name: 'AWS Terraform No Infrastructure Change - Reusable'
-    runs-on: self-hosted 
+    #runs-on: self-hosted 
+    runs-on: ubuntu-latest
 #    environment:  #Here is the name of your environment
            
     steps:
