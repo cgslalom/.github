@@ -2,7 +2,12 @@ name: 'AWS-Terraform-NoInfraChangeSteps'
 
 on: 
   workflow_call:
-  
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+        
 jobs:
   aws-terraform-noinfrachange-reusable:
     name: 'AWS Terraform No Infrastructure Change - Reusable'
@@ -29,16 +34,17 @@ jobs:
       id: init
       run: terraform init 
     
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      TF_ACTION_WORKING_DIR: '.'
-      AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     
     # Checks that all Terraform configuration files adhere to a canonical format and style
     - name: Terraform Format
       id: fmt
       run: terraform fmt 
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TF_ACTION_WORKING_DIR: '.'
+      AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     
     # Validates the configuration
     - name: Terraform Validate
