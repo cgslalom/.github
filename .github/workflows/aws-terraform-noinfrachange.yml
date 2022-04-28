@@ -1,4 +1,4 @@
-name: 'AWS-Terraform-NoInfraChangeSteps'
+name: AWS Terraform No Infrastructure Change Steps
 
 on: 
   workflow_call:
@@ -7,13 +7,13 @@ on:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
-        
+
 jobs:
   aws-terraform-noinfrachange-reusable:
     name: 'AWS Terraform No Infrastructure Change - Reusable'
-    #runs-on: self-hosted 
     runs-on: ubuntu-latest
-#    environment:  #Here is the name of your environment
+    #runs-on: self-hosted 
+    #environment:  #Here is the name of your environment
            
     steps:
     # Checkout the repository 
