@@ -1,9 +1,7 @@
 name: 'AWS-Terraform-NoInfraChangeSteps'
 
-on:
-  workflow_call:
-   
- 
+on: workflow_call
+  
 jobs:
   aws-terraform-noinfrachange-reusable:
     name: 'AWS Terraform No Infrastructure Change - Reusable'
