@@ -43,6 +43,7 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+        
 
       # Evaluates and generates an execution plan for Terraform
       - name: Terraform Plan
